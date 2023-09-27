@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 /* Route::get('/', function () {
     return view('pages/blank-page',  ['type_menu' => '']);
 }); */
-Route::get('/', function () {
+// di tutup krd pakai fortify
+/* Route::get('/', function () {
     return view('pages.app.dashboard-siakad',  ['type_menu' => '']);
 })->name('register');
 
@@ -33,4 +34,14 @@ Route::get('/forgot', function () {
 Route::get('/reset-password', function () {
     return view('pages.auth.auth-reset-password',  ['type_menu' => '']);
 })->name('reset-password');
+ */
+Route::get('/', function () {
+    return view('pages.auth.auth-login');
+});
 
+ Route::middleware(['auth'])->group(function(){
+    Route::get('home', function(){
+        return view('pages.app.dashboard-siakad', ['type_menu' => '']);
+       
+    })->name('home');
+ });

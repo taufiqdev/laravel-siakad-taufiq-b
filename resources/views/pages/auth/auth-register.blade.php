@@ -16,21 +16,29 @@
 
         <div class="card-body">
             <form method="POST">
+                @csrf
                 <div class="row">
-                    <div class="form-group col-6">
+                    {{-- <div class="form-group col-6">
                         <label for="frist_name">First Name</label>
                         <input id="frist_name"
                             type="text"
                             class="form-control"
                             name="frist_name"
                             autofocus>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="last_name">Last Name</label>
-                        <input id="last_name"
+                    </div> --}}
+                    <div class="form-group col-12">
+                        <label for="name">Name</label>
+                        <input id="name"
                             type="text"
-                            class="form-control"
-                            name="last_name">
+                            class="form-control @error('name') is-invalid
+                                
+                            @enderror"
+                            name="name">
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>     
+                        @enderror        
                     </div>
                 </div>
 
@@ -38,51 +46,59 @@
                     <label for="email">Email</label>
                     <input id="email"
                         type="email"
-                        class="form-control"
+                        class="form-control @error('email') is-invalid
+                            
+                        @enderror"
                         name="email">
-                    <div class="invalid-feedback">
-                    </div>
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>     
+                    @enderror      
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12">
                         <label for="password"
                             class="d-block">Password</label>
                         <input id="password"
                             type="password"
-                            class="form-control pwstrength"
-                            data-indicator="pwindicator"
+                            class="form-control @error('password') is-invalid
+                                
+                            @enderror"
                             name="password">
-                        <div id="pwindicator"
-                            class="pwindicator">
-                            <div class="bar"></div>
-                            <div class="label"></div>
-                        </div>
+                        @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>     
+                        @enderror      
                     </div>
-                    <div class="form-group col-6">
+                    
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
                         <label for="password2"
                             class="d-block">Password Confirmation</label>
                         <input id="password2"
                             type="password"
-                            class="form-control"
-                            name="password-confirm">
+                            class="form-control @error('password_confirmation') is-invalid
+                                
+                            @enderror"
+                            name="password_confirmation">
+                        @error('password_confirmation')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>     
+                        @enderror                                  
                     </div>
+                     
                 </div>
 
-                <div class="form-divider">
+                {{-- <div class="form-divider">
                     Your Home
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
-                        <label>Country</label>
-                        <select class="form-control selectric">
-                            <option>Indonesia</option>
-                            <option>Palestine</option>
-                            <option>Syria</option>
-                            <option>Malaysia</option>
-                            <option>Thailand</option>
-                        </select>
-                    </div>
+                     
                     <div class="form-group col-6">
                         <label>Province</label>
                         <select class="form-control selectric">
@@ -113,7 +129,7 @@
                         <label class="custom-control-label"
                             for="agree">I agree with the terms and conditions</label>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <button type="submit"
