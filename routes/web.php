@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,4 +45,6 @@ Route::get('/', function () {
         return view('pages.app.dashboard-siakad', ['type_menu' => '']);
        
     })->name('home');
+
+    Route::resource('user', UserController::class);
  });
