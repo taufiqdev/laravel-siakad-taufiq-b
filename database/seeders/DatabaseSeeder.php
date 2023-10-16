@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\AbsensiMatkul;
 use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
@@ -24,7 +25,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class, 
             SubjectSeeder::class,
-            ScheduleSeeder::class
+            ScheduleSeeder::class,
+            KhsSeeder::class,
+            AbsensiMatkulSeeder::class,
+
         ]);
         
     }
