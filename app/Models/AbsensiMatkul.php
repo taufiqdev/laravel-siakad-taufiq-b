@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class AbsensiMatkul extends Model
 {
     use HasFactory;
+
+    function schedule() 
+    {
+        return $this->belongsTo((Schedule::class));
+        
+    }
+
+    function student() 
+    {
+        return $this->belongsTo((User::class));
+        
+    }
+
 }
