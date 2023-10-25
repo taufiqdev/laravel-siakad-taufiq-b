@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\KhsResource;
 use App\Models\Khs;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class KhsController extends Controller
         $khs=Khs::where('student_id', '=', $user->id)->paginate(10)->load('subject');
 //        $allKhs=Khs::paginate(10);
         //return $allKhs;
-        return $khs;
+        return KhsResource::collection($khs);
     }
 
     /**
