@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleResource;
 use App\Models\Schedule;
+use App\Models\StudentSchedule;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -16,9 +17,9 @@ class ScheduleController extends Controller
     {
         $user=$request->user();
         //return ScheduleResource::collection(Schedule::all()->load('subject'));
-        $schedules=Schedule::where('student_id', '=', $user->id)->get();
+        $schedules=StudentSchedule::where('student_id', '=', $user->id)->get();
         //return ScheduleResource::collection($schedules->load('subject'));
-        return ScheduleResource::collection($schedules->load('subject', 'subject.lecturer','student'));
+        return ScheduleResource::collection($schedules->load('schedule', 'schedule.subject','schedule.subject.lecturer'));
     }
 
     /**

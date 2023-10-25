@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('tahun_akademik');
             $table->string('semester');
             $table->string('pertemuan');
-            $table->string('status');
+            $table->string('status')->default('Hadir');
             $table->string('keterangan')->nullable();
             $table->string('latitude');
             $table->string('longitude');

@@ -25,6 +25,7 @@ class AbsensiMatkulController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $request->validate([
             'schedule_id' => 'required|exists:schedules,id',
             'kode_absensi' => 'required',
@@ -36,11 +37,13 @@ class AbsensiMatkulController extends Controller
         ]);
 
         $user=$request->user();
+        //dd($user->id);
         $request->merge([
             'student_id' => $user->id,
             'created_by' => $user->id,
             'updated_by' => $user->id,
         ]);
+        
 
         $absensiMatkul=AbsensiMatkul::create($request->all());
         return $absensiMatkul;
